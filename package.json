@@ -1,0 +1,5 @@
+{ "name" : "TOTP"
+, "version" : "1.0.0"
+, "description" : "A TOTP variation using TwiML"
+, "main" : "server.js"
+}
