@@ -12,30 +12,32 @@ var client = new twilio.RestClient(keys.pub, keys.sec);
 var url = require('url');
 
 http.createServer(function (req, res) {
-	if (url.parse(req.url, true).query.Body.toLowerCase() == 'google') {
-	  	res.writeHead(200, {'Content-Type': 'text/xml'});
-		res.write("<Response>\n");
-		res.write("<Message>\n");
-		res.write("Your authentication code is: " + new authZero(keys.key1, 6).now());
-		res.write("</Message>");
-		res.write("</Response>");
-		res.end();
-	}
-	else if (url.parse(req.url, true).query.Body.toLowerCase() == 'facebook') {
-		res.writeHead(200, {'Content-Type': 'text/xml'});
-		res.write("<Response>\n");
-		res.write("<Message>\n");
-		res.write("Your authentication code is: " + new authZero(keys.key2, 6).now());
-		res.write("</Message>");
-		res.write("</Response>");
-		res.end();
+	if(url.parse(req.url, true).query.Body){
+		if (url.parse(req.url, true).query.Body.toLowerCase() == 'google') {
+		  	res.writeHead(200, {'Content-Type': 'text/xml'});
+			res.write("<Response>\n");
+			res.write("<Message>\n");
+			res.write("Your authentication code is: " + new authZero(keys.key1, 6).now());
+			res.write("</Message>");
+			res.write("</Response>");
+			res.end();
+		}
+		else if (url.parse(req.url, true).query.Body.toLowerCase() == 'facebook') {
+			res.writeHead(200, {'Content-Type': 'text/xml'});
+			res.write("<Response>\n");
+			res.write("<Message>\n");
+			res.write("Your authentication code is: " + new authZero(keys.key2, 6).now());
+			res.write("</Message>");
+			res.write("</Response>");
+			res.end();
+		}
 	}
 	else if(req.headers.dnt == 1) {
 		res.writeHead(200, {'Content-Type': 'text/plain'});
 		client.sendSms({
 			to:keys.to,
 		    	from:keys.from,
-		    	body:'Your authentication code is: ' + authOne.now()
+		    	body:'Google: ' + new authZero(keys.key1, 6).now() + '\nFacebook: ' + new authZero(keys.key2, 6).now()
 		}, function(error, message) {
 		    if (!error) {
 		        	console.log('Message sent on:');
