@@ -12,7 +12,7 @@ var http = require('http');
 var client = new twilio.RestClient(keys.pub, keys.sec);
 
 http.createServer(function (req, res) {
-	if (req.headers.Body == "pls") {
+	if (req.headers.Body == config.password) {
 	  	res.writeHead(200, {'Content-Type': 'text/xml'});
 		//res.write("<?xml>\n");
 		res.write("<Response>\n");

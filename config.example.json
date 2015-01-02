@@ -4,5 +4,6 @@ module.exports = {
   "pub": " ",//Twilio Application key
   "sec":" ",//Twilio secret key
   "to":"+ ",//To number
-  "from":"+ "//From number
+  "from":"+ ",//From number
+  "password":" "//Password to which the appliaction responds to requests
 }
