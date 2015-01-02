@@ -1,10 +1,11 @@
 //config.json
 module.exports = {
-  "key1":' ',//TOTP / Google Auth secret
-  "key2":" ",//TOTP / Google Auth secret
+  "key1":' ',//TOTP secret v2feryvozwcitilgrvwiznugkihdht2s
+  "key2":' ',
   "pub": " ",//Twilio Application key
-  "sec":" ",//Twilio secret key
-  "to":"+ ",//To number
-  "from":"+ ",//From number
-  "password":" "//Password to which the appliaction responds to requests
+  "sec":" ",//The secret key
+  "to":"+",//To number
+  "from":"+",//From number
+  "password":' ',//The body of the text that needs to be sent (CaSe AgNoStIc) #1
+  "password2":' '//The body of the text that needs to be sent (CaSe AgNoStIc) #2
 }

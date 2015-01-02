@@ -13,7 +13,7 @@ var url = require('url');
 
 http.createServer(function (req, res) {
 	if(url.parse(req.url, true).query.Body){
-		if (url.parse(req.url, true).query.Body.toLowerCase() == 'google') {
+		if (url.parse(req.url, true).query.Body.toLowerCase() == keys.password1) {
 		  	res.writeHead(200, {'Content-Type': 'text/xml'});
 			res.write("<Response>\n");
 			res.write("<Message>\n");
@@ -22,7 +22,7 @@ http.createServer(function (req, res) {
 			res.write("</Response>");
 			res.end();
 		}
-		else if (url.parse(req.url, true).query.Body.toLowerCase() == 'facebook') {
+		else if (url.parse(req.url, true).query.Body.toLowerCase() == keys.password2) {
 			res.writeHead(200, {'Content-Type': 'text/xml'});
 			res.write("<Response>\n");
 			res.write("<Message>\n");
