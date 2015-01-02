@@ -1,6 +1,7 @@
 //config.json
 module.exports = {
-  "key":' ',//TOTP / Google Auth secret
+  "key1":' ',//TOTP / Google Auth secret
+  "key2":" ",//TOTP / Google Auth secret
   "pub": " ",//Twilio Application key
   "sec":" ",//Twilio secret key
   "to":"+ ",//To number

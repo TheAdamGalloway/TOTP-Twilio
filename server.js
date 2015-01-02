@@ -4,20 +4,28 @@ var keys = require('./config.js');
 var twilio = require('twilio');
 //Require the onceler module
 var authZero = require('onceler').TOTP;
-//Initialise the onceler module
-var authOne = new authZero(keys.key, 6);
 //Initialise the HTTP server
 var http = require('http');
 //Initialise the Twilio client
 var client = new twilio.RestClient(keys.pub, keys.sec);
+//Parse requests
+var url = require('url');
 
 http.createServer(function (req, res) {
-	if (req.headers.Body == keys.password) {
+	if (url.parse(req.url, true).query.Body.toLowerCase() == 'google') {
 	  	res.writeHead(200, {'Content-Type': 'text/xml'});
-		//res.write("<?xml>\n");
 		res.write("<Response>\n");
 		res.write("<Message>\n");
-		res.write("Your authentication code is: " + authOne.now());
+		res.write("Your authentication code is: " + new authZero(keys.key1, 6).now());
+		res.write("</Message>");
+		res.write("</Response>");
+		res.end();
+	}
+	else if (url.parse(req.url, true).query.Body.toLowerCase() == 'facebook') {
+		res.writeHead(200, {'Content-Type': 'text/xml'});
+		res.write("<Response>\n");
+		res.write("<Message>\n");
+		res.write("Your authentication code is: " + new authZero(keys.key2, 6).now());
 		res.write("</Message>");
 		res.write("</Response>");
 		res.end();
@@ -39,5 +47,10 @@ http.createServer(function (req, res) {
 		    }
 		res.end();
 		});
+	}
+	else {
+		res.writeHead(200, {'Content-Type': 'text/plain'});
+		res.write("You are not authenticated.");
+		res.end();
 	}
 }).listen(process.env.OPENSHIFT_NODEJS_PORT || 80, process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1');
