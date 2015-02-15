@@ -7,15 +7,15 @@ var auth = require('onceler').TOTP;
 //Initialise the HTTP server
 var http = require('http');
 //Initialise the Twilio client
-var client = new twilio.RestClient(keys.pub, keys.sec);
+var client = new twilio.RestClient(keys.pub, keys.secret);
 //Parse requests
 var url = require('url');
 
-function code (arb) {
-	if (arb == 1) {
+function code (i) {
+	if (i == 1) {
 		return new auth(keys.key1, 6).now();
 	}
-	else if (arb == 2) {
+	else if (i == 2) {
 		return new auth(keys.key2, 6).now();
 	}
 	
@@ -46,21 +46,24 @@ http.createServer(function (req, res) {
 	else if (url.parse(req.url, true).path == "/" + keys.password1 || url.parse(req.url, true).path == "/" + keys.password2 ) {
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write("<h1>Google:" + code(1) +"<br>");
-		res.write("Facebook:"+ code(2) +"</h1>")
+		res.write("Facebook:"+ code(2) +"</h1>");
 		client.sendSms({
 			to:keys.to,
 		    	from:keys.from,
 		    	body:'Google: ' + code(1) + '\nFacebook: ' + code(2)
 		}, 
 		function(error, message) {
-		    if (!error) {
+		    if (!error)
+		     {
 		        	console.log('Message sent on:');
 		        	console.log(message.dateCreated);
 		        	res.write("Sent authentication code to your phone.");
-		    } else {
+		    }
+		    else {
 		        	console.log('Oops! There was an error.');
 		        	res.write("There was an error.");
 		    }
+		});
 		res.end();
 	}
 	else  {
