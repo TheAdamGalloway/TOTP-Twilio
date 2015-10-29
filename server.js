@@ -1,6 +1,6 @@
 //Require the keys
 var keys = require('./config.js');
-//Require the Twilio REST API
+//Require the Twilio API
 var twilio = require('twilio');
 //Require the onceler module
 var auth = require('onceler').TOTP;
