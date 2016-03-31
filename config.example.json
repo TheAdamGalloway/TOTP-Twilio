@@ -1,6 +1,6 @@
 //config.json
 module.exports = {
-  "key1":' ',//TOTP secret v2feryvozwcitilgrvwiznugkihdht2s
+  "key1":' ',//TOTP secret
   "key2":' ',
   "pub": " ",//Twilio Application key
   "sec":" ",//The secret key
