@@ -20,7 +20,7 @@ I made this mainly to solve a problem that I was afraid of: Forgetting my mobile
 3. Add your server's domain as a [TwiML app](https://www.twilio.com/user/account/apps) in your Twilio account
 4. Send a text message to you Twilio number with your configured password as the body
 5. Receive your Two-factor auth code
-
+ 
 #Future Development
 - Support for multiple auth accounts
 - Better protection against random requests
