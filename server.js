@@ -41,7 +41,7 @@ http.createServer(function (req, res) {
 			res.write("</Message>");
 			res.write("</Response>");
 			res.end();
-		}
+		} 
 	}
 	else if (url.parse(req.url, true).path == "/" + keys.password1 || url.parse(req.url, true).path == "/" + keys.password2 ) {
 		res.writeHead(200, {'Content-Type': 'text/html'});
