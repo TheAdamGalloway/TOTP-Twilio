@@ -25,3 +25,4 @@ I made this mainly to solve a problem that I was afraid of: Forgetting my mobile
 - Support for multiple auth accounts
 - Better protection against random requests
 - Better user feedback
+ 
