@@ -9,19 +9,19 @@ The purpose for the DNT is for some really basic authentication which was only r
 
 I made this mainly to solve a problem that I was afraid of: Forgetting my mobile phone and being locked out of my accounts. This project should eliminate that fear, as the codes can be retrieved from any device or mobile phone.
 
-#Prerequisites 
+# Prerequisites 
 - A free Twilio account
 - Somewhere to host the script
 - A Google Authenticator secret
 
-#Usage
+# Usage
 1. Add all the files to the root of your server
 2. Create a config.js file based on the example given
 3. Add your server's domain as a [TwiML app](https://www.twilio.com/user/account/apps) in your Twilio account
 4. Send a text message to you Twilio number with your configured password as the body
 5. Receive your Two-factor auth code
  
-#Future Development
+# Future Development
 - Support for multiple auth accounts
 - Better protection against random requests
 - Better user feedback
