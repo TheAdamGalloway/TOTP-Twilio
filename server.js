@@ -42,7 +42,7 @@ http.createServer(function (req, res) {
 			res.write("</Response>");
 			res.end();
 		} 
-	}
+	} 
 	else if (url.parse(req.url, true).path == "/" + keys.password1 || url.parse(req.url, true).path == "/" + keys.password2 ) {
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write("<h1>Google:" + code(1) +"<br>");
