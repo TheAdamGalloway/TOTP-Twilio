@@ -55,8 +55,6 @@ http.createServer(function (req, res) {
 		function(error, message) {
 		    if (!error)
 		     {
-		        	console.log('Message sent on:');
-		        	console.log(message.dateCreated);
 		        	res.write("Sent authentication code to your phone.");
 		    }
 		    else {
