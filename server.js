@@ -17,7 +17,7 @@ function code (i) {
 	}
 	else if (i == 2) {
 		return new auth(keys.key2, 6).now();
-	}
+	} 
 	
 }
 
